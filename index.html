@@ -5,23 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Player</title>
     <link rel="stylesheet" href="style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="controller">
-      <div class="controller_previous" id="controllerPrevious">
-        <div class="line1"></div>
-        <div class="line2"></div>
-      </div>
-      <div class="controller_play" id="playPause">
-        <div class="line1"></div>
-        <div class="line2"></div>
-      </div>
-      <div class="controller_next" id="controllerNext">
-        <div class="line1"></div>
-        <div class="line2"></div>
+    <div class="musicPlayer">
+      <div class="screen">
+        <div class="thumbnail">
+          <img id="thumbnailImg" src="assets/thumbnail/logo.jpg" />
+        </div>
+        <div class="playing" id="playing">Hello music</div>
+        <div class="progressDuration" id="progressDuration">Select a music</div>
+        <div class="progress">
+          <div class="progress_inner" id="indicator"></div>
+        </div>
+        <div class="controller">
+          <div class="controller_previous" id="controllerPrevious">
+            -5s
+          </div>
+          <div class="controller_play" id="playPause">
+            <div class="line1"></div>
+            <div class="line2"></div>
+          </div>
+          <div class="controller_next" id="controllerNext">
+            +5s
+          </div>
+        </div>
+        <div class="musicList" id="musicList">
+          <div class="musicList__menu">
+            <span> Favorites</span>
+            <span id="songs">Show</span>
+          </div>
+          <!-- <span class="music">Hello god</span>
+        <span class="music">World says good bye</span>
+        <span class="music">Firing in the castle</span> -->
+        </div>
       </div>
     </div>
-
-    <script src="app.js"></script>
+    <script type="module" defer src="app.js"></script>
   </body>
 </html>
