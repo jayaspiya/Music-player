@@ -9,6 +9,10 @@
 - Music progress
 - Bigger Playlist
 
+## Screenshot
+
+![Site Screenshot](./assets/screenshot.png);
+
 ## Status
 
 Status: Completed
