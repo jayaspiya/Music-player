@@ -1,0 +1,51 @@
+@mixin playTrans {
+  transition: all 0.3s ease-out;
+}
+
+.controller {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+
+  * {
+    cursor: pointer;
+    @include playTrans;
+  }
+  &_play {
+    display: flex;
+    align-items: center;
+
+    * {
+      width: 0.4 * $controllerSize;
+      height: $controllerSize;
+      background: #333;
+    }
+
+    .line1 {
+      clip-path: polygon(0 0, 100% 25%, 100% 75%, 0% 100%);
+    }
+    .line2 {
+      clip-path: polygon(0 25%, 100% 50%, 100% 50%, 0 75%);
+    }
+    .pause {
+      clip-path: polygon(10% 0, 90% 0, 90% 100%, 10% 100%);
+      @include playTrans;
+    }
+  }
+  &_next,
+  &_previous {
+    color: #333;
+    font-size: 0.8em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    width: 40px;
+    border: 1px solid #333;
+    user-select: none;
+  }
+  .anim {
+    transform: scale(0.8);
+    background: #222;
+  }
+}

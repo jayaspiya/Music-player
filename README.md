@@ -1,3 +1,14 @@
-# Music Player
+# Coral Music Player
 
-- Basic controller design & animation
+## Features
+
+- Choose Music
+- Play/Pause
+- 5s forward/backward
+- Music time
+- Music progress
+- Bigger Playlist
+
+## Status
+
+Status: Completed

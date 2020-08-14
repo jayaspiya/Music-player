@@ -16,12 +16,13 @@ body {
 
 .musicPlayer {
   width: 300px;
-  background: #aab1bc;
-  -webkit-transform: rotate(-15deg) skew(20deg) translate(0, 0);
-          transform: rotate(-15deg) skew(20deg) translate(0, 0);
+  background: #b7cece;
+  -webkit-transform: rotate(-20deg) skew(10deg) translate(0, 0);
+          transform: rotate(-20deg) skew(10deg) translate(0, 0);
   -webkit-box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.4);
           box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.4);
-  border-top-right-radius: 10px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .musicPlayer::before {
@@ -31,10 +32,9 @@ body {
   left: -15px;
   height: 100%;
   width: 15px;
-  background: #6d7984;
+  background: #6e7e85;
   -webkit-transform: rotate(0deg) skewY(-45deg);
           transform: rotate(0deg) skewY(-45deg);
-  border-top-left-radius: 15px;
 }
 
 .musicPlayer::after {
@@ -44,55 +44,9 @@ body {
   left: -8px;
   height: 15px;
   width: 300px;
-  background: #6d7984;
+  background: #6e7e85;
   -webkit-transform: rotate(0deg) skewX(-45deg);
           transform: rotate(0deg) skewX(-45deg);
-  border-bottom-right-radius: 15px;
-}
-
-.screen {
-  background: #fff;
-  margin: 20px;
-}
-
-.thumbnail {
-  width: 100%;
-  height: 210px;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.thumbnail img {
-  height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.playing {
-  font-size: 1.2em;
-  font-weight: bold;
-  border-top: 1px solid rgba(51, 51, 51, 0.5);
-  border-radius: 30px;
-  color: #333;
-  margin-top: 2px;
-  min-height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
 }
 
 .progress {
@@ -245,6 +199,75 @@ body {
   cursor: pointer;
 }
 
+.playlist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 10px;
+  font-size: 0.8em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.playlist #songs {
+  background: #333;
+  color: #fff;
+  padding: 2px 5px;
+  font-size: 0.9em;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.playing {
+  font-size: 1.2em;
+  font-weight: bold;
+  border-top: 1px solid rgba(51, 51, 51, 0.5);
+  border-radius: 30px;
+  color: #333;
+  margin-top: 2px;
+  min-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.screen {
+  background: #fff;
+  margin: 20px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.thumbnail img {
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .openPlaylist {
   height: 320px;
 }
@@ -252,5 +275,31 @@ body {
 .openPlaylistThumbnail {
   height: 10px;
   opacity: 0;
+}
+
+#viewController {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background: #333;
+  color: #fff;
+  padding: 2px 10px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+#viewController:active {
+  background: #444;
+}
+
+.twoDview {
+  -webkit-transform: rotate(0deg) skew(0deg) translate(0, 0);
+          transform: rotate(0deg) skew(0deg) translate(0, 0);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 /*# sourceMappingURL=style.css.map */

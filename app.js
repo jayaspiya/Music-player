@@ -1,4 +1,5 @@
 import yourSongs from "./song.js";
+
 const wrap = document.querySelector("#playPause");
 const controllerNext = document.querySelector("#controllerNext");
 const controllerPrevious = document.querySelector("#controllerPrevious");
@@ -8,16 +9,63 @@ const thumbnailImg = document.querySelector("#thumbnailImg");
 const indicator = document.querySelector("#indicator");
 const progressDuration = document.querySelector("#progressDuration");
 const songs = document.querySelector("#songs");
+const viewController = document.querySelector("#viewController");
+const musicPlayer = document.querySelector("#musicPlayer");
 
 let isPlay = true;
 let indicatorStarted = false;
 let timer;
+const musics = yourSongs.pull();
+let audio = new Audio();
 
+audio.loop = true;
+controllerPrevious.addEventListener("click", previousMusic);
+controllerNext.addEventListener("click", nextMusic);
 wrap.addEventListener("click", function () {
   if (audio.src) {
     playPauseSong();
   }
 });
+
+musics.forEach((music) => {
+  let span = document.createElement("span");
+  const txt = document.createTextNode(ConvertToReadable(music));
+  const att = document.createAttribute("class");
+  att.value = "music";
+  span.append(txt);
+  span.setAttributeNode(att);
+  musicList.appendChild(span);
+});
+
+musicList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("music")) {
+    let song = e.target.textContent;
+
+    playing.textContent = song;
+    song = ConvertToReadable(song, false);
+    audio.src = "assets/music/" + song + ".mp3";
+    thumbnailImg.src = "assets/thumbnail/" + song + ".jpg";
+    audio.play();
+    toggler(false);
+    isPlay = false;
+    startIndicator();
+  }
+
+  e.preventDefault();
+});
+
+viewController.addEventListener("click", () => {
+  musicPlayer.classList.toggle("twoDview");
+});
+
+songs.addEventListener("click", function () {
+  musicList.classList.toggle("openPlaylist");
+  thumbnailImg.parentElement.classList.toggle("openPlaylistThumbnail");
+  songs.textContent == "Hide"
+    ? (songs.textContent = "Show")
+    : (songs.textContent = "Hide");
+});
+
 function playPauseSong() {
   toggler();
   if (isPlay) {
@@ -46,9 +94,6 @@ function toggler(prime = true) {
   }
 }
 
-controllerPrevious.addEventListener("click", previousMusic);
-controllerNext.addEventListener("click", nextMusic);
-
 function previousMusic(e) {
   controllerPrevious.classList.add("anim");
   setTimeout(() => {
@@ -66,51 +111,6 @@ function nextMusic(e) {
   }, 100);
   audio.currentTime += 5;
   e.preventDefault();
-}
-const musics = yourSongs.pull();
-
-musics.forEach((music) => {
-  let span = document.createElement("span");
-  const txt = document.createTextNode(ConvertToReadable(music));
-  const att = document.createAttribute("class");
-  att.value = "music";
-  span.append(txt);
-  span.setAttributeNode(att);
-  musicList.appendChild(span);
-});
-
-let audio = new Audio();
-
-function playAudio() {
-  audio.play();
-}
-function pauseAudio() {
-  audio.pause();
-}
-musicList.addEventListener("click", (e) => {
-  if (e.target.classList.contains("music")) {
-    let song = e.target.textContent;
-
-    playing.textContent = song;
-    song = ConvertToReadable(song, false);
-    audio.src = "assets/music/" + song + ".mp3";
-    thumbnailImg.src = "assets/thumbnail/" + song + ".jpg";
-    audio.play();
-    toggler(false);
-    isPlay = false;
-    startIndicator();
-  }
-
-  e.preventDefault();
-});
-function ConvertToReadable(txt, convertToReadableString = true) {
-  if (convertToReadableString) {
-    txt = txt.replaceAll("_", " ");
-  } else {
-    txt = txt.replaceAll(" ", "_");
-  }
-
-  return txt;
 }
 function startIndicator() {
   if (!indicatorStarted) {
@@ -144,15 +144,22 @@ function startIndicator() {
     return tm;
   }
 }
-
 function stopIndicator() {
   indicatorStarted = false;
   clearInterval(timer);
 }
-songs.addEventListener("click", function () {
-  musicList.classList.toggle("openPlaylist");
-  thumbnailImg.parentElement.classList.toggle("openPlaylistThumbnail");
-  songs.textContent == "Hide"
-    ? (songs.textContent = "Show")
-    : (songs.textContent = "Hide");
-});
+function ConvertToReadable(txt, convertToReadableString = true) {
+  if (convertToReadableString) {
+    txt = txt.replaceAll("_", " ");
+  } else {
+    txt = txt.replaceAll(" ", "_");
+  }
+
+  return txt;
+}
+function playAudio() {
+  audio.play();
+}
+function pauseAudio() {
+  audio.pause();
+}

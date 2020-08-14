@@ -1,0 +1,30 @@
+.progress {
+  margin: auto;
+  height: 2px;
+  width: 80%;
+  background: rgba(53, 53, 53, 0.1);
+  border-radius: 30px;
+  &_inner {
+    height: 2px;
+    border-radius: 30px;
+    background: #da22ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #9733ee,
+      #da22ff
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #9733ee,
+      #da22ff
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    width: 0%;
+    transition: 0.1s ease;
+  }
+}
+.progressDuration {
+  width: 100%;
+  font-size: 0.7em;
+  text-align: center;
+}

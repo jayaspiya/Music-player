@@ -1,0 +1,28 @@
+.musicPlayer {
+  width: $playerWidth;
+  background: $playerPrimeColor;
+  transform: rotate(-20deg) skew(10deg) translate(0, 0);
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -15px;
+    height: 100%;
+    width: 15px;
+    background: $playerSecondaryColor;
+    transform: rotate(0deg) skewY(-45deg);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: -8px;
+    height: 15px;
+    width: $playerWidth;
+    background: $playerSecondaryColor;
+    transform: rotate(0deg) skewX(-45deg);
+  }
+}
