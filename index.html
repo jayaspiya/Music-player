@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coral player</title>
+    <title>Coral Music</title>
     <link rel="stylesheet" href="style/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
@@ -12,6 +12,11 @@
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
   </head>
   <body>
+    <div class="watermarkWrapper">
+      <img src="assets/Coral_logo.svg" alt="Coral" class="watermark" />
+      <img src="assets/Coral_logo.svg" alt="Coral" class="watermark" />
+    </div>
+
     <div class="musicPlayer" id="musicPlayer">
       <div class="screen">
         <div class="thumbnail">
@@ -24,14 +29,16 @@
         </div>
         <div class="controller">
           <div class="controller_previous" id="controllerPrevious">
-            -5s
+            <img src="assets/Backward.svg" alt="+" />
+            <span>5</span>
           </div>
           <div class="controller_play" id="playPause">
             <div class="line1"></div>
             <div class="line2"></div>
           </div>
           <div class="controller_next" id="controllerNext">
-            +5s
+            <img src="assets/Forward.svg" alt="-" />
+            <span>5</span>
           </div>
         </div>
         <div class="playlist">
@@ -41,7 +48,10 @@
         <div class="musicList" id="musicList"></div>
       </div>
     </div>
-    <button id="viewController"><img src="./assets/box.svg" alt="" /></button>
+    <button id="viewController">
+      <img src="./assets/glass.png" class="" alt="3D Glass" />
+      <span class="tooltip">Perception</span>
+    </button>
     <script type="module" defer src="app.js"></script>
   </body>
 </html>

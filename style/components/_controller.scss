@@ -39,13 +39,24 @@
     position: relative;
     display: flex;
     justify-content: center;
-    height: 20px;
-    width: 40px;
-    border: 1px solid #333;
-    user-select: none;
+    line-height: 30px;
+
+    span {
+      user-select: none;
+    }
+    img {
+      position: absolute;
+      transition: 0.2s;
+    }
   }
   .anim {
     transform: scale(0.8);
-    background: #222;
+  }
+  .rotateEffect {
+    transform: rotate(360deg);
+    transition: 0;
+  }
+  .rotateEffectOpp {
+    transform: rotate(-360deg);
   }
 }

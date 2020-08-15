@@ -56,6 +56,7 @@ musicList.addEventListener("click", (e) => {
 
 viewController.addEventListener("click", () => {
   musicPlayer.classList.toggle("twoDview");
+  viewController.children[0].classList.toggle("threeDOff");
 });
 
 songs.addEventListener("click", function () {
@@ -95,22 +96,27 @@ function toggler(prime = true) {
 }
 
 function previousMusic(e) {
-  controllerPrevious.classList.add("anim");
-  setTimeout(() => {
-    controllerPrevious.classList.remove("anim");
-  }, 100);
+  nextPreviousMusic(controllerPrevious);
   audio.currentTime -= 5;
-
   e.preventDefault();
 }
 
 function nextMusic(e) {
-  controllerNext.classList.add("anim");
-  setTimeout(() => {
-    controllerNext.classList.remove("anim");
-  }, 100);
+  nextPreviousMusic(controllerNext);
   audio.currentTime += 5;
   e.preventDefault();
+}
+
+function nextPreviousMusic(element) {
+  element.classList.add("anim");
+  const imgHere = element.children[0];
+  element.id == "controllerNext"
+    ? imgHere.classList.add("rotateEffect")
+    : imgHere.classList.add("rotateEffectOpp");
+  setTimeout(() => {
+    element.classList.remove("anim");
+    element.children[0].className = "";
+  }, 200);
 }
 function startIndicator() {
   if (!indicatorStarted) {
