@@ -9,7 +9,7 @@
 - 5s forward/backward
 - Music time
 - Music progress
-- Bigger Playlist
+- Open playlist
 
 
 ## Status
