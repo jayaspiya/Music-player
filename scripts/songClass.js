@@ -11,6 +11,10 @@ class Songs {
     return this.songs;
   }
 }
+// The song name and author name should be entered with underscore instead of space
+// The thumbnail must be jpg
+// The audio file must be mp3
+// Use underscore instead of space while naming them
 let yourSongs = new Songs();
 yourSongs.insert("1245", "Etham");
 yourSongs.insert("I'm_coming_home", "Skylar_Grey");

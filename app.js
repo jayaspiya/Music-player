@@ -1,4 +1,5 @@
-import yourSongs from "./song.js";
+import yourSongs from "./scripts/songClass.js";
+import ConvertToReadable from "./scripts/textConverter.js"
 
 const wrap = document.querySelector("#playPause");
 const controllerNext = document.querySelector("#controllerNext");
@@ -15,6 +16,7 @@ const musicPlayer = document.querySelector("#musicPlayer");
 let isPlay = true;
 let indicatorStarted = false;
 let timer;
+let isPlaylistOpen = false;
 const musics = yourSongs.pull();
 let audio = new Audio();
 
@@ -40,7 +42,6 @@ musics.forEach((music) => {
 musicList.addEventListener("click", (e) => {
   if (e.target.classList.contains("music")) {
     let song = e.target.textContent;
-
     playing.textContent = song;
     song = ConvertToReadable(song, false);
     audio.src = "assets/music/" + song + ".mp3";
@@ -49,6 +50,7 @@ musicList.addEventListener("click", (e) => {
     toggler(false);
     isPlay = false;
     startIndicator();
+    if (isPlaylistOpen) playlistToggler();
   }
 
   e.preventDefault();
@@ -59,13 +61,14 @@ viewController.addEventListener("click", () => {
   viewController.children[0].classList.toggle("threeDOff");
 });
 
-songs.addEventListener("click", function () {
+songs.addEventListener("click", playlistToggler);
+
+function playlistToggler() {
   musicList.classList.toggle("openPlaylist");
   thumbnailImg.parentElement.classList.toggle("openPlaylistThumbnail");
-  songs.textContent == "Hide"
-    ? (songs.textContent = "Show")
-    : (songs.textContent = "Hide");
-});
+  isPlaylistOpen ? (songs.textContent = "Show") : (songs.textContent = "Hide");
+  isPlaylistOpen = !isPlaylistOpen;
+}
 
 function playPauseSong() {
   toggler();
@@ -83,7 +86,6 @@ function playPauseSong() {
 }
 function toggler(prime = true) {
   const childWrap = wrap.children;
-
   if (prime) {
     childWrap[0].classList.toggle("pause");
     childWrap[1].classList.toggle("pause");
@@ -153,15 +155,6 @@ function startIndicator() {
 function stopIndicator() {
   indicatorStarted = false;
   clearInterval(timer);
-}
-function ConvertToReadable(txt, convertToReadableString = true) {
-  if (convertToReadableString) {
-    txt = txt.replaceAll("_", " ");
-  } else {
-    txt = txt.replaceAll(" ", "_");
-  }
-
-  return txt;
 }
 function playAudio() {
   audio.play();
