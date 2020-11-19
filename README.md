@@ -1,5 +1,7 @@
 # Coral Music Player
 
+![Site Screenshot](./assets/cover.png);
+
 ## Features
 
 - Choose Music
@@ -9,9 +11,6 @@
 - Music progress
 - Bigger Playlist
 
-## Screenshot
-
-![Site Screenshot](./assets/screenshot.png);
 
 ## Status
 
